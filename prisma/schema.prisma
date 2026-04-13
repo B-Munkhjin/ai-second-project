@@ -11,3 +11,26 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Article {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  summary   String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  quizzes   Quiz[]
+}
+
+
+model Quiz {
+  id        String   @id @default(cuid())
+  question  String
+  options   String[]
+  answer    String
+  articleId String
+  article   Article  @relation(fields: [articleId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

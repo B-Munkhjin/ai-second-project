@@ -8,6 +8,7 @@ import {
 } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import DashboardLayout from "./dashboard/layout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-inter `}
       >
         <ClerkProvider>
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
+          <header className="flex justify-end items-center p-6 gap-4 h-16 font-inter">
             <Show when="signed-out">
               <SignInButton />
               <SignUpButton>
@@ -48,7 +49,7 @@ export default function RootLayout({
               <UserButton />
             </Show>
           </header>
-          {children}
+          <DashboardLayout children={children} />
         </ClerkProvider>
       </body>
     </html>
