@@ -1,6 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { FileText, Sparkles } from "lucide-react";
 
 import { useState } from "react";
@@ -9,10 +10,10 @@ export default function quizGen() {
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
-  const clear = () => {
-    setPrompt("");
-    setImageUrl("");
-  };
+  //   const clear = () => {
+  //     setPrompt("");
+  //     setImageUrl("");
+  //   };
 
   return (
     <div className=" flex flex-col bg-white border rounded-2xl p-7 gap-4 relative ">
@@ -32,7 +33,7 @@ export default function quizGen() {
           <FileText className="size-5" />
           <h1 className="text-[#18181B] text-base w-214">Article Title</h1>
         </div>
-        <Input
+        <Textarea
           //   value={prompt}
           className=" w-214 h-fit bg-[#FFFFFF] border border-[#E4E4E7] px-3 py-2 rounded-md "
           placeholder="Enter a title for your article..."
@@ -46,7 +47,7 @@ export default function quizGen() {
           <FileText className="size-5" />
           <h1 className="text-[#18181B] text-base w-214">Article Content</h1>
         </div>
-        <Input
+        <Textarea
           //   value={}
           className="flex w-full h-30  bg-[#FFFFFF] border border-[#E4E4E7] px-5 py-4 rounded-md"
           placeholder="Enter a title for your article..."
