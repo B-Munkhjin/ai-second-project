@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-inter `}
       >
         <ClerkProvider>
-          <header className="flex justify-end items-center p-6 gap-4 h-16 font-inter">
+          <header className="flex justify-end items-center px-6 gap-4 pt-4 font-inter">
             <Show when="signed-out">
               <SignInButton />
               <SignUpButton>

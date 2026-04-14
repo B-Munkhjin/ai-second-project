@@ -12,8 +12,8 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className=" ">
-      <SidebarProvider>
+    <div className="">
+      <SidebarProvider className=" flex justify-center relative top-16">
         <AdminSideBar />
         <main>{children}</main>
       </SidebarProvider>
