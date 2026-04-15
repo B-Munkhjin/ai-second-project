@@ -1,19 +1,13 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { FileText, Sparkles } from "lucide-react";
+import { BookOpen, FileText, Sparkles } from "lucide-react";
 
-import { useState } from "react";
+import { use, useState } from "react";
 
 export default function quizGen() {
+  const [title, setTitle] = useState("");
   const [prompt, setPrompt] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-
-  //   const clear = () => {
-  //     setPrompt("");
-  //     setImageUrl("");
-  //   };
 
   return (
     <div className=" flex flex-col bg-white border rounded-2xl p-7 gap-4 relative ">
@@ -34,11 +28,11 @@ export default function quizGen() {
           <h1 className="text-[#18181B] text-base w-214">Article Title</h1>
         </div>
         <Textarea
-          //   value={prompt}
+          value={title}
           className=" w-214 h-fit bg-[#FFFFFF] border border-[#E4E4E7] px-3 py-2 rounded-md "
           placeholder="Enter a title for your article..."
           onChange={(event) => {
-            setPrompt(event.target.value);
+            setTitle(event.target.value);
           }}
         />
       </div>
@@ -48,7 +42,7 @@ export default function quizGen() {
           <h1 className="text-[#18181B] text-base w-214">Article Content</h1>
         </div>
         <Textarea
-          //   value={}
+          value={prompt}
           className="flex w-full h-30  bg-[#FFFFFF] border border-[#E4E4E7] px-5 py-4 rounded-md"
           placeholder="Enter a title for your article..."
           onChange={(event) => {
@@ -65,5 +59,49 @@ export default function quizGen() {
     </div>
   );
 }
+
+/////summary component
+const Summ = ({ prompt, limit = 250 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleBtn = () => setIsExpanded(!isExpanded);
+  return (
+    <div>
+      <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
+          <BookOpen className="size-4" />
+          <h1 className="text-[#737373] font-semibold text-base">
+            Summarized content
+          </h1>
+        </div>
+        <h2 className="text-[#000000] text-2xl font-semibold">{title}</h2>
+        <p className="text-sm text-[#000000]">{summ}</p>
+      </div>
+      <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
+          <FileText className="size-4" />
+          <h1 className="text-[#737373] font-semibold text-base">
+            Article content
+          </h1>
+        </div>
+        <p className="text-sm text-[#000000] h-15">{prompt}</p>
+        <p>
+          {isExpanded ? prompt : `${prompt.slice(0, limit)}...`}
+          <button
+            onClick={toggleBtn}
+            className="text-sm font-medium text-[#09090B] ml-100"
+          >
+            {isExpanded ? "Show Less" : "Show More"}
+          </button>
+        </p>
+      </div>
+      <div className="flex justify-start">
+        <button className=" w-31 py-2 px-4 bg-[#18181B] rounded-md text-white text-sm">
+          Take a quiz
+        </button>
+      </div>
+    </div>
+  );
+};
 
 // export default Home();
