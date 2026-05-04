@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "tailwindcss";
-
+@layer theme, base, clerk, components, utilities;
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

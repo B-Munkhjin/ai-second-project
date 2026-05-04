@@ -1,20 +1,11 @@
-// import { error } from "console";
-// import { NextResponse } from "next/server";
+// import { PrismaClient } from "../../../app/generated/prisma/client";
 
-// export async function POST(request: Request) {
+// const prisma = new PrismaClient({});
 
-//   try {
-//     const response = await fetch("http://localhost:3000/", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//     });
-//     const data = await response.json();
-//     if (!response.ok) {
-//       return error;
-//     }
-//     return NextResponse.json({});
-//   } catch (error) {
-//     console.error(error);
-//     return NextResponse.json({ message: "Server error" }, { status: 500 });
-//   }
-// }
+// const newPost = await prisma.post.create({
+//   data: {
+//     title,
+//     content,
+//     summary
+//   },
+// });
